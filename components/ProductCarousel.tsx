@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { products } from "@/lib/products";
-import Glyph from "./Glyph";
+import Image from "next/image";
 
 function Chevron({ dir }: { dir: "left" | "right" }) {
   return (
@@ -98,34 +98,56 @@ export default function ProductCarousel() {
         aria-label="Mecozx products"
         className="no-scrollbar track-pad mt-10 flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth pb-2 outline-offset-4"
       >
-        {products.map((p, i) => (
-          <article
+        {products.map((p) => (
+          <a
             key={p.name}
-            className="flex h-80 w-56 shrink-0 snap-start flex-col justify-between rounded-md bg-white p-5 transition-transform duration-300 ease-out hover:-translate-y-1 motion-reduce:transition-none sm:w-60"
+            href={p.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group flex h-[24rem] w-64 shrink-0 snap-start flex-col justify-between rounded-md bg-white p-5 transition-transform duration-300 ease-out hover:-translate-y-1 motion-reduce:transition-none"
           >
-            <div className="flex items-start justify-between text-neutral-900">
-              <Glyph name={p.glyph} />
-              <span className="font-mono text-[11px] text-neutral-400">
-                {String(i + 1).padStart(2, "0")}
-              </span>
-            </div>
+            <Image
+              src={p.image.src}
+              alt={`${p.name} logo`}
+              width={p.image.width}
+              height={p.image.height}
+              className="h-14 w-auto max-w-full select-none rounded-lg object-contain object-left"
+            />
 
             <div>
               <p className="font-mono text-[11px] uppercase tracking-wider text-neutral-400">
                 {p.tag}
               </p>
-              <h3 className="mt-1 text-base font-semibold tracking-tight">
+              <h3 className="mt-1 text-lg font-semibold tracking-tight">
                 {p.name}
               </h3>
               <p className="mt-2 text-sm leading-snug text-neutral-500">
                 {p.description}
               </p>
-              <p className="mt-5 inline-flex items-center gap-2 text-xs font-medium text-neutral-900">
-                <span className="size-1.5 rounded-full bg-neutral-300" />
-                Coming soon
-              </p>
+              <div className="mt-5 flex items-center justify-between text-xs font-medium text-neutral-900">
+                <span className="inline-flex items-center gap-2">
+                  {p.status && (
+                    <span className="size-1.5 rounded-full bg-amber-400" />
+                  )}
+                  {p.status ?? "Visit"}
+                </span>
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden="true"
+                  className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
+                >
+                  <path d="M7 17L17 7M8 7h9v9" />
+                </svg>
+              </div>
             </div>
-          </article>
+          </a>
         ))}
       </div>
     </section>
