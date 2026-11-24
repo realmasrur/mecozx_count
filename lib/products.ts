@@ -1,45 +1,52 @@
-export type Glyph = "ring" | "grid" | "bars" | "dots" | "diamond";
-
 export interface Product {
   name: string;
   tag: string;
   description: string;
-  glyph: Glyph;
+  href: string;
+  /** Shown instead of the arrow when the product is not live yet. */
+  status?: string;
+  image: { src: string; width: number; height: number };
 }
 
-/**
- * Placeholder product cards - edit freely.
- * Add `href` support in components/ProductCarousel.tsx when product pages exist.
- */
 export const products: Product[] = [
   {
-    name: "Mecozx Vault",
-    tag: "Hardware wallet",
-    description: "Cold storage with transparent, auditable hardware.",
-    glyph: "ring",
+    name: "CoSign",
+    tag: "Source-available",
+    description:
+      "Independent co-signing guardrail for crypto exchanges. Decodes, prices and policy-checks every withdrawal before adding a required second signature.",
+    href: "https://cosignlanding-iota.vercel.app/",
+    image: { src: "/products/cosign.png", width: 160, height: 160 },
   },
   {
-    name: "Mecozx Bio",
-    tag: "Biometric key",
-    description: "Fingerprint-secured signing that never leaves the device.",
-    glyph: "dots",
+    name: "Pay3 Wallet",
+    tag: "EVM wallet",
+    description:
+      "One of the fastest EVM wallets. 9 major blockchains with the lowest fees possible.",
+    href: "https://pay3.space",
+    image: { src: "/products/pay3.png", width: 160, height: 160 },
   },
   {
-    name: "Mecozx Node",
-    tag: "Web3 infrastructure",
-    description: "Plug-in hardware to run your own decentralized node.",
-    glyph: "grid",
+    name: "WorkMail",
+    tag: "Email control center",
+    description:
+      "Compose from noreply@, support@ or info@, test templates and use the API Playground, all through your own Resend key.",
+    href: "https://workmail.space",
+    image: { src: "/products/workmail.png", width: 626, height: 160 },
   },
   {
-    name: "Mecozx Sign",
-    tag: "Secure signer",
-    description: "Offline transaction signing, verified on a clear display.",
-    glyph: "bars",
+    name: "1Block",
+    tag: "Blockchain",
+    description:
+      "One of the world's fastest single-node blockchains, with a 3 second block time.",
+    href: "https://github.com/realmasrur/1block",
+    image: { src: "/products/1block.png", width: 160, height: 160 },
   },
   {
-    name: "Mecozx Shield",
-    tag: "Backup",
-    description: "Durable recovery hardware for the keys that matter.",
-    glyph: "diamond",
+    name: "VoidKin",
+    tag: "Money transfer",
+    description: "Multicurrency faith money transfer application.",
+    href: "https://kin.voidkin.world",
+    status: "In development",
+    image: { src: "/products/voidkin.png", width: 219, height: 160 },
   },
 ];
