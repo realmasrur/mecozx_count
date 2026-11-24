@@ -35,10 +35,18 @@
 /* ------------------------------------------------------------------ */
 
 :root {
-  --logo-h: 2.5rem; /* h-10 */
-  --header-pt: 2.5rem; /* pt-10 */
-  --intro-scale: 1.5;
+  --logo-h: 1.75rem; /* h-7 on mobile */
+  --header-pt: 2rem; /* pt-8 on mobile */
+  --intro-scale: 1.6;
   --reveal-start: 2.3s; /* content appears after the logo settles */
+}
+
+@media (min-width: 640px) {
+  :root {
+    --logo-h: 2.5rem; /* sm:h-10 */
+    --header-pt: 2.5rem; /* sm:pt-10 */
+    --intro-scale: 1.5;
+  }
 }
 
 /* Logo: fade in at screen centre -> hold -> glide to top centre. */

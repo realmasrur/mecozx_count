@@ -10,15 +10,15 @@ export default function Home() {
       <h1 className="sr-only">Mecozx — launching soon</h1>
 
       {/* Logo: centre fade-in, then glides to the top (see .logo-intro) */}
-      <header className="flex justify-center pt-10">
-        <div className="logo-intro h-10">
+      <header className="flex justify-center pt-8 sm:pt-10">
+        <div className="logo-intro h-7 sm:h-10">
           <Image
             src="/mecozx-logo.png"
             alt="Mecozx"
             width={531}
             height={80}
             priority
-            className="h-10 w-auto select-none"
+            className="h-7 w-auto select-none sm:h-10"
           />
         </div>
       </header>
