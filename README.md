@@ -20,6 +20,8 @@ npm run dev        # http://localhost:3000
    - Environment variable: `NODE_VERSION` = `22`
 4. Deploy, then add `mecozx.com` under **Custom domains**.
 
+If Cloudflare shows a **Deploy command** field (Workers Builds), set Build command `npm run build` and Deploy command `npx wrangler deploy`. `wrangler.jsonc` serves the `out/` folder as static assets, so no OpenNext is needed. Make `name` in `wrangler.jsonc` match your project name.
+
 (Or from the CLI: `npm run build && npx wrangler pages deploy out`.)
 
 ## Things you will want to edit
