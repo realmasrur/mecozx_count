@@ -111,7 +111,7 @@ export default function ProductCarousel() {
               alt={`${p.name} logo`}
               width={p.image.width}
               height={p.image.height}
-              className="h-14 w-auto max-w-full select-none rounded-lg object-contain object-left"
+              className="h-20 w-auto max-w-full select-none rounded-xl object-contain object-left"
             />
 
             <div>
