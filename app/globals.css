@@ -1,0 +1,97 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    background: #fff;
+  }
+  body {
+    font-family: var(--font-sans);
+  }
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Aligns the card track with the max-w-6xl heading column. */
+.track-pad {
+  --pad: max(1.5rem, calc((100vw - 72rem) / 2 + 1.5rem));
+  padding-inline: var(--pad);
+  scroll-padding-inline: var(--pad);
+}
+
+/* ------------------------------------------------------------------ */
+/* Motion - transform + opacity only, so everything stays on the GPU  */
+/* compositor and holds 60fps.                                        */
+/* ------------------------------------------------------------------ */
+
+:root {
+  --logo-h: 2.5rem; /* h-10 */
+  --header-pt: 2.5rem; /* pt-10 */
+  --intro-scale: 1.5;
+  --reveal-start: 2.3s; /* content appears after the logo settles */
+}
+
+/* Logo: fade in at screen centre -> hold -> glide to top centre. */
+.logo-intro {
+  --shift: calc(50svh - var(--header-pt) - var(--logo-h) / 2);
+  animation: logo-intro 3.2s both;
+  will-change: transform, opacity;
+  transform-origin: 50% 50%;
+}
+
+@keyframes logo-intro {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, var(--shift), 0) scale(var(--intro-scale));
+    animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  28% {
+    opacity: 1;
+    transform: translate3d(0, var(--shift), 0) scale(var(--intro-scale));
+  }
+  50% {
+    opacity: 1;
+    transform: translate3d(0, var(--shift), 0) scale(var(--intro-scale));
+    animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+/* Everything else rises in once the logo is in place. */
+.reveal {
+  animation: reveal 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: calc(var(--reveal-start) + var(--d, 0s));
+}
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 16px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .logo-intro,
+  .reveal {
+    animation: none !important;
+    opacity: 1;
+    transform: none;
+  }
+}
