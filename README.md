@@ -27,9 +27,9 @@ npm run dev        # http://localhost:3000
 | What | Where |
 | --- | --- |
 | Launch date (default 1 Dec 2026, 00:00 UTC+6) | `lib/config.ts`, or set `NEXT_PUBLIC_LAUNCH_DATE` in Cloudflare and redeploy |
-| Product cards (placeholders) | `lib/products.ts` |
+| Product cards and logos | `lib/products.ts` |
 | Share link | `SITE_URL` in `lib/config.ts` |
-| Logo | `public/mecozx-logo.png` |
+| Logo | `public/mecozx-logo.png` (product logos: `public/products/`) |
 
 ## Notes
 
